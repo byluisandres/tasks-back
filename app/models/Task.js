@@ -18,15 +18,17 @@ const taskSchema = new Schema(
       required: true,
       trim: true,
     },
-    date:{
+    date: {
       type: Date,
       required: true,
       trim: true,
+      default: new Date(),
     },
     done: {
       type: Boolean,
       required: true,
       trim: true,
+      default: false,
     },
   },
   { timestamps: true }
