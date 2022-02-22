@@ -8,6 +8,26 @@ const taskSchema = new Schema(
       required: true,
       trim: true,
     },
+    tags: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    date:{
+      type: Date,
+      required: true,
+      trim: true,
+    },
+    done: {
+      type: Boolean,
+      required: true,
+      trim: true,
+    },
   },
   { timestamps: true }
 );

@@ -8,6 +8,7 @@ const conectDB = async () => {
     mongoose.connect(process.env.DB_MONGO, {
       useNewUrlParser: true,
     });
+    console.log("bd bien");
   } catch (error) {
     console.log(error);
     process.exit(1); // se detiene la aplicación
