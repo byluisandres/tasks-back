@@ -4,7 +4,8 @@
   "description": "backend para las tareas",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "dev": "nodemon ./index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/byluisandres/tasks-back/issues"
   },
-  "homepage": "https://github.com/byluisandres/tasks-back#readme"
+  "homepage": "https://github.com/byluisandres/tasks-back#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
