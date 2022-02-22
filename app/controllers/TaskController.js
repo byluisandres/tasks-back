@@ -38,10 +38,16 @@ exports.update = async (req, res) => {
     console.log(error);
   }
 };
-exports.destroy = async (req, res) => {
+exports.destroy = async (req, res, next) => {
+  const task = await Task.findByIdAndDelete({ _id: req.params.id });
   try {
-    res.json("fdf");
+    if (!task) {
+      res.status(500).json({ status: 0, message: "Tarea no encontrada" });
+      return next();
+    }
+    res.json({ message: "Tarea eliminada" });
   } catch (error) {
     console.log(error);
+    es.status(500).json({ status: 0, message: "Hubo un error" });
   }
 };
