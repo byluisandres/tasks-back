@@ -4,7 +4,17 @@ const Task = require("../Models/Task");
 // Obtener todas las tareas
 exports.index = async (req, res) => {
   try {
-    const tasks = await Task.find({});
+    const tasks = await Task.find({ done: false }).sort();
+    res.json(tasks);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: 0, message: "Hubo un error" });
+  }
+};
+// Obtener todas las tareas hechas
+exports.done = async (req, res) => {
+  try {
+    const tasks = await Task.find({ done: true });
     res.json(tasks);
   } catch (error) {
     console.log(error);
@@ -20,6 +30,7 @@ exports.create = async (req, res) => {
     res.json({
       status: 1,
       message: "Tarea añadida",
+      data: task,
     });
   } catch (error) {
     console.log(error);
@@ -47,6 +58,7 @@ exports.update = async (req, res) => {
   try {
     // Extraer
     const { done } = req.body;
+    console.log(done)
     let task = await Task.findById(req.params.id);
 
     if (!task) {
@@ -63,7 +75,7 @@ exports.update = async (req, res) => {
     task = await Task.findOneAndUpdate({ _id: req.params.id }, newTask, {
       new: true,
     });
-    
+
     res.json({ status: 1, message: "Tarea editada" });
   } catch (error) {
     console.log(error);
